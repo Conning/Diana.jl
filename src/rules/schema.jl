@@ -9,13 +9,13 @@ struct getfield_types
 		notbasic_types=[[],[]]
 		function enter(node)
 			if (node.kind == "FieldDefinition")
-				type = node.tipe.name.value
-				if(type in scalars_types)
+				local_type = node.tipe.name.value
+				if(local_type in scalars_types)
 				    push!(basic_types[1],node.name.value)
-				    push!(basic_types[2],type)
+				    push!(basic_types[2],local_type)
 				else
 					push!(notbasic_types[1],node.name.value)
-				    push!(notbasic_types[2],type)
+				    push!(notbasic_types[2],local_type)
 				end
 			end
 			if (node.kind == "OperationTypeDefinition")

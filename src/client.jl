@@ -19,6 +19,12 @@ function Queryclient(data::String,check::Bool)
 	end
 end
 
+# function Query(url::String,data::String; vars::Dict=Dict(),auth::String="Bearer 0000", headers::Dict=Dict())
+#   r=post(url; json = Dict("query"=>data,"variables" => vars),headers = merge(Dict("Accept" => "application/json","Content-Type" => "application/json" ,"Authorization" => auth), headers))
+#   content = r.status == 200 ? String(r.data): "{\"data\":{}}"
+#   return Result(r,content)
+# end
+
 function Queryclient(url::String,data::String; vars::Dict=Dict(),auth::String="Bearer 0000", headers::Dict=Dict(),getlink::Bool=false,check::Bool=false,operationName::String="")
 
 	if (getlink == true)
@@ -82,3 +88,12 @@ function GraphQLClient(url::String; auth::String="Bearer 0000", headers::Dict=Di
 
 	return Client(Query,serverUrl,setheaders,serverAuth)
 end
+
+# 	function Query(data::String;vars::Dict=Dict())
+# 	  r=post(my_url; json = Dict("query"=>data,"variables" => vars),headers = merge(Dict("Accept" => "application/json","Content-Type" => "application/json" ,"Authorization" => my_auth), headers))
+# 	  content = r.status == 200 ? String(r.data): "{\"data\":{}}"
+# 	  return Result(r,content)
+# 	end
+
+# 	return Client(Query,serverUrl,serverAuth)
+# end
